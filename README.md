@@ -46,6 +46,14 @@ SQL-based analysis of Instagram user data to provide actionable insights for mar
 - **Bot detection system** helps maintain platform integrity
 - **Hashtag insights** enable strategic brand partnerships
 
+## 🔍 Key SQL Queries
+
+1. **Loyal Users** — `SELECT username FROM users ORDER BY created_at ASC LIMIT 5` — identifies the 5 earliest registered users for a loyalty reward program
+2. **Inactive Users** — Users who have never posted (`LEFT JOIN photos ... WHERE photos.id IS NULL`) — 26% of users flagged for re-engagement campaign
+3. **Top Hashtags** — Count tag frequency across all photos using `GROUP BY tag_name ORDER BY COUNT(*) DESC LIMIT 5`
+4. **Contest Winner** — Identify photo with the most likes using a subquery on the `likes` table
+5. **Bot Detection** — Users who have liked every single photo (`HAVING COUNT(*) = (SELECT COUNT(*) FROM photos)`) — flags suspicious automated accounts
+
 ## 👤 Author
 
 **Sakhi Patel**  
@@ -53,8 +61,4 @@ SQL-based analysis of Instagram user data to provide actionable insights for mar
 
 ## 🎓 Course Context
 
-SQL Fundamentals project demonstrating advanced query techniques for business intelligence and social media analytics.
-
----
-
-*Transforming raw user data into strategic business insights through SQL analysis*
+Undergraduate SQL analytics project demonstrating query techniques for business intelligence and social media analytics. PDEU, AY 2024–2025.
